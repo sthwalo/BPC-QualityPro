@@ -1,0 +1,504 @@
+/* Global settings */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+header {
+  background-color: #152C40;  /* Dark blue background color */
+  z-index: 1050;  /* Ensures header is above other content */
+  width: 100%;    /* Full width */
+  top: 0;         /* Align to the top of the page */
+  position: fixed;/* Fixed position to make it sticky */
+  left: 0;        /* Align to the left side of the page */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Optional: Adds shadow for better visibility */
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  background: #152C40; ;  /* Dark background color */
+  color: #FFF;  /* White text color */
+  padding-top: 70px; /* Add padding to prevent page content from hiding behind the header */
+}
+
+header .container {
+  position: relative;
+  max-width: 960px;
+  padding: 30px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+header .container .brand h2 .logo {
+  max-width: 150px;
+  height: auto;
+  vertical-align: middle;
+  margin-right: 0px;
+}
+
+header .container .mobile-nav {
+  display: none;
+}
+
+header .container .mobile-nav .open-menu,
+header .container .navbar .menu .menu-item a,
+header .container .navbar .close-menu {
+  color: #D9D9D9;
+  text-decoration: none;
+}
+
+header .container .navbar {
+  display: flex;
+  list-style: none;
+}
+
+header .container .navbar .menu {
+  display: flex;
+  list-style: none;
+}
+
+header .container .navbar .menu .menu-item {
+  position: relative;
+  margin-right: 0;
+  padding: 10px 25px;
+}
+
+header .container .navbar .menu .menu-item a:hover,
+header .container .navbar .menu .menu-item a:focus {
+  color: #A67B2D;
+  background-color: #323232;
+  transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover and focus */
+}
+header .container .navbar .menu .menu-item.has-sub-menu:hover > a::after {
+  transform: rotate(45deg);  /* Rotates the '+' icon on hover */
+}
+header .container .navbar .menu .menu-item.has-sub-menu > a::after {
+  content: none;
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  color: #152C40;
+  font-size: 18px;
+  font-weight: 500;  /* Bold the '+' icon */
+  transition: transform 0.3s; /* Smooth transition for rotating the '+' icon */
+}
+
+
+header .container .navbar .menu .menu-item.has-sub-menu .sub-menu {
+  display: none;
+  position: absolute;
+  background-color: #222;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+  z-index: 1000;
+  min-width: 100%;
+  width: max-content;
+  list-style-type: none;
+}
+
+header .container .navbar .menu .menu-item.has-sub-menu:hover .sub-menu {
+  display: flex;
+  animation: slideDown 0.5s forwards ease-out;
+}
+
+/* Adjustments for mobile view */
+@media screen and (max-width: 767px) {
+  header .container .mobile-nav,
+  header .container .navbar,
+  header .container .navbar .close-menu {
+    display: none;
+  }
+
+  header .container .navbar {
+    position: absolute;
+    top: 100%;  /* Align directly below the header */
+    left: 0;
+    width: 100%;
+    background-color: #222;
+    flex-direction: column;
+  }
+
+  header .container .navbar.is-active {
+    display: flex;
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+#main {
+  background-image: url('https://bpcqp.co.za/wp-content/uploads/2024/11/BPC-Profile-e1730456016933.png');
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh; /* Changed to min-height to accommodate more content */
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.logo-header,
+.tagline {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.logo-header {
+  /*transform: translateY(-50px);*/
+  animation: slideIn 2s forwards;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.tagline {
+  opacity: 0;
+  /*transform: translateY(20px);*/
+  animation: fadeInUp 2s 2s forwards;
+  margin-top: 20px;
+  margin-bottom: 20px;
+	 background: #152C40; 
+}
+
+h1 {
+  font-size: 2rem;
+  position: relative;
+  padding: 1rem;
+  font-weight: 400;
+  opacity: 1;
+  transform: scale(1);
+  transition: transform 2s ease, opacity 2s ease;
+  background: #152C40; /* Dark blue background for buttons */
+}
+
+h1:before, h1:after {
+  content: "";
+  position: absolute;
+  height: 2px;
+  width: 100%;
+  background: white; /* White border lines */
+  transition: width 4s ease;
+  transition-delay: 2s;
+}
+
+h1:before {
+  top: 0;
+  left: 0;
+}
+
+h1:after {
+  bottom: 0;
+  right: 0;
+}
+
+.is-loading h1:before, .is-loading h1:after {
+  width: 0;
+}
+
+
+.btn {
+  display: inline-block;
+  padding: 5px 13px;
+  color: #fff;
+  background: #152C40; /* Dark blue from the palette */
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease; /* Smooth transition for hover */
+}
+
+.btn:hover {
+  background: #A67B2D; /* Gold color for hover */
+}
+.logo-header h1, .tagline h3 {
+  margin: 10px 0; /* Space between header elements */
+  animation: fadeInUp 2s ease-out; /* Animation for visibility */
+}
+
+.logo-header p, .tagline p {
+  margin-bottom: 20px; /* Space below paragraphs */
+  line-height: 1.6; /* Improved line spacing for readability */
+}
+
+.values-list {
+  list-style: inside; /* Styling for list */
+  text-align: left; /* Align text to the left within the centered tagline */
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Desktop-specific styles */
+@media screen and (min-width: 768px) {
+    header .container .navbar {
+        display: flex; /* Ensures that the navbar is always visible on desktop */
+        position: relative; /* Resets any absolute positioning from mobile styles */
+        width: auto; /* Resets any full width applied on mobile */
+    }
+
+    header .container .mobile-nav {
+        display: none; /* Ensures mobile nav elements are hidden on desktop */
+    }
+
+    header .container .navbar .close-menu {
+        display: none; /* Hide the close menu button on desktop */
+        position: absolute; /* Positions the close button absolutely within the navbar */
+        top: 50%; /* Adjust this value to position between 'Services' and 'About' */
+        transform: translateY(-50%); /* Centers the button vertically */
+        width: 100%; /* Makes sure the button stretches across */
+       text-align: center; /* Ensures the text is centered within the button */
+       z-index: 1060;
+    }
+}
+
+/* Mobile-specific styles */
+@media screen and (max-width: 767px) {
+    header .container .mobile-nav,
+    header .container .navbar.is-active {
+        display: none; /* Only display these elements on mobile */
+    }
+
+    header .container .navbar {
+      position: absolute;
+      top: 100%;  /* Align directly below the header */
+      left: 0;
+      width: 100%;
+      display: none; /* Initially hidden */
+      background-color: #222;
+      flex-direction: column;
+      z-index: 1050;  /* Ensures mobile navbar appears over other content */
+    }
+
+    header .container .navbar.is-active {
+        display: flex; /* Display the menu when active */
+			  display: flex;
+  align-items: center;
+  justify-content: center;
+    }
+}
+/* Social media icons styling */
+.social-media {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.social-icon {
+  padding: 0 10px;
+  color: #A67B2D; /* Gold color for icons */
+  font-size: 16px; /* Icon size */
+  transition: color 0.3s; /* Smooth transition for hover */
+}
+
+.social-icon:hover i {
+  color: #152C40; /* Dark blue on hover for the icon */
+}
+
+header {
+background-color: #152C40;  /* Dark blue background color */
+z-index: 1060;  /* Ensures header is above other elements but below an active mobile menu */
+}
+
+header .container .navbar {
+display: flex;
+list-style: none;
+z-index: 1000;  /* Ensure navbar is at the same level as header */
+}
+.services-section {
+  text-align: center;
+  padding: 50px 20px;
+  background: linear-gradient(to bottom, #F2DAAC, #FFF); /* Gradient background */
+}
+
+.services-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  padding: 0px;
+}
+
+.service-card {
+  position: relative;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  background: #FFF; /* White background for content clarity */
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.service-card img {
+  width: 100%;
+  transition: transform 0.3s ease-out;
+}
+
+.service-card:hover img {
+  transform: scale(1.05); /* Slight zoom on hover */
+}
+
+.service-card h3, .service-card h4, .service-card h2, .service-card h1, .service-card p {color: #152C40; /* Dark blue for headings */
+  padding: 10px;
+}
+
+.sub-content {
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 20px;
+  display: none; /* Hidden by default */
+  overflow-y: auto; /* Allows scrolling */
+  transform: translateY(100%);
+  transition: transform 0.3s ease-out;
+}
+
+.service-card:hover .sub-content {
+  display: block;
+  transform: translateY(0); /* Slide in effect */
+}
+
+/* Styling for links */
+.btn {
+  display: inline-block;
+  background: #152C40; /* Dark blue from the palette */
+  color: #fff;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease; /* Smooth transition for hover */
+}
+
+.btn:hover {
+  background: #A67B2D; /* Gold color for hover */
+}
+
+/* Styling for links */
+.btn {
+  display: inline-block;
+  background: #152C40; /* Dark blue from the palette */
+  color: #fff;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease; /* Smooth transition for hover */
+}
+
+.btn:hover {
+  background: #A67B2D; /* Gold color for hover */
+}
+.team-section {
+  text-align: center;
+  color: #000;
+  padding: 50px 20px;
+  background-image: url(https://bpcqp.co.za/wp-content/uploads/2024/11/BPC-Profile-e1730456016933.png);
+ }
+
+.team-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  padding: 20px;
+}
+
+.team-card {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  background: #FFF;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.team-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+.team-card img {
+  margin-bottom: 20px;
+}
+
+.team-card h3 {
+  color: #152C40;
+  margin-bottom: 5px;
+}
+
+.team-card p {
+  color: #666;
+  margin-bottom: 10px;
+  font-size: 0.9rem;
+}
+
+.btn {
+  background: #152C40;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+
+.btn:hover {
+  background: #A67B2D;
+}
+
+/* Adjustments for mobile view */
+@media screen and (max-width: 767px) {
+  header .container .mobile-nav,
+  header .container .navbar,
+  header .container .navbar .close-menu {
+    display: flex;
+    z-index: 1050;  /* Higher z-index to make it visible above other content */
+  }
+
+  header .container .navbar {
+    position: absolute;
+    top: 100%;  /* Align directly below the header */
+    left: 0;
+    width: 100%;
+    background-color: #222;
+    flex-direction: column;
+    display: none; /* Initially hidden, shown when active */
+  }
+
+  header .container .navbar.is-active {
+    display: flex; /* Show navbar when menu is toggled */
+  }
+};
+/* CSS to always show the hamburger icon on smaller screens */
+.hamburger {
+    display: block; /* Ensures the hamburger is visible on smaller screens */
+}
+
+/* Media Query to hide the hamburger icon on screens wider than 768px */
+@media (min-width: 768px) {
+    .hamburger {
+        display: none; /* Hides the hamburger icon on larger screens */
+    }
+}
